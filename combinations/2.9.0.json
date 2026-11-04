@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "gtnh": "2.9.0",
+  "revision": 1,
+  "minecraft": "1.7.10",
+  "artifacts": [
+    {
+      "project": "miner",
+      "version": "5.5.1",
+      "url": "https://github.com/QuanhuZeYu/Qz-Miner/releases/download/5.5.1/qz_miner-5.5.1.jar",
+      "sha256": "71b9b5e680e42cfdc5e642034985c06ab2ff844b65f9854465302343e47066e2",
+      "format": "jar"
+    },
+    {
+      "project": "uilib",
+      "version": "5.0.0-beta5",
+      "url": "https://github.com/QuanhuZeYu/Qz-UILib/releases/download/5.0.0-beta5/qz-uilib-minecraft-5.0.0-beta5-1.7.10.zip",
+      "sha256": "2ef47b1684dc75732d930abc39ff69279c4364fbdedfd55024e9d461da7194df",
+      "format": "zip"
+    },
+    {
+      "project": "compat",
+      "version": "1.0.0-beta3",
+      "url": "https://github.com/QuanhuZeYu/Qz-UILib-Compat/releases/download/1.0.0-beta3/qz_uilib_compat-1.0.0-beta3.jar",
+      "sha256": "96e027630cb903f5906800eb9ecd0eb256b95bd01db81234c4507d806f682644",
+      "format": "jar"
+    }
+  ]
+}

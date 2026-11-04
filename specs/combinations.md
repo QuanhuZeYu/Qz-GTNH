@@ -4,9 +4,9 @@ Qz-GTNH 为指定 GTNH 版本固定一套已发布 Qz 运行制品，提供补�
 
 ## 范围
 
-- 初始目标为 GTNH `2.9.0-RC2` 与 `2.9.0`，Minecraft `1.7.10`。
+- 初始目标为 GTNH `2.9.0-RC-2` 与 `2.9.0`，Minecraft `1.7.10`。
 - 组合包含 Qz-Miner、Qz-UILib 必需运行件、Qz-UILib-Compat，消费上游公开 Release。
-- 采用 Python 3.11+ 标准库完成下载、校验与 ZIP 打包。
+- 采用 Python 3.12+ 标准库完成下载、校验与 ZIP 打包。
 - 自有代码采用 MIT；上游及第三方许可随安装包保留。
 
 ## 职责
