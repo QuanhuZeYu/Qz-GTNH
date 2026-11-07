@@ -76,8 +76,8 @@ jobs:
         shell: bash
         run: |
           if [[ "$TARGET" == *-RC-* ]]; then
-            RELEASE_TITLE="GTNH $TARGET 测试版 · Qz 完整安装包 ${RELEASE_TAG##*-}"
+            RELEASE_TITLE="GTNH $TARGET 测试版 · Qz 完整安装包"
           else
-            RELEASE_TITLE="GTNH $TARGET 正式版 · Qz 完整安装包 ${RELEASE_TAG##*-}"
+            RELEASE_TITLE="GTNH $TARGET 正式版 · Qz 完整安装包"
           fi
           gh release create "$RELEASE_TAG" build/dist/* --verify-tag --title "$RELEASE_TITLE" --notes-file build/release-notes.md --latest=false
