@@ -23,4 +23,18 @@ Qz-GTNH 为指定 GTNH 版本固定一套已发布 Qz 运行制品，提供补�
 
 分支 CI 构建全部组合。发布工作流仅手动触发，输入已有 annotated tag 及 `PUBLISH <tag>`；从标签不可变提交重新校验、打包并创建正式 Release，附完整安装 ZIP、组合清单和 SHA256。push、tag 与 Release 沿工作站授权边界执行。
 
-发布说明面向玩家，写适用版本、完整安装包下载链接和安装步骤。构建日志保留在 Actions，实机记录独立维护。
+发布说明面向玩家，用短句写适用版本、完整安装包下载链接和文件复制步骤；明确旧 Qz 文件的处理方法与包内 Jar 全部安装。构建日志保留在 Actions，实机记录独立维护。
+
+## 维护命令
+
+使用 Python 3.12+ 标准库。组合输入见[正式版清单](<../combinations/2.9.0.json>)与 [RC2 清单](<../combinations/2.9.0-RC-2.json>)。
+
+```text
+python tools/bundle.py check
+python tools/bundle.py build
+python tools/bundle.py build --target 2.9.0-RC-2
+```
+
+安装包、组合清单和 SHA256 输出到 `build/dist/`；下载缓存放在 `build/cache/`。所有下载及缓存均核对摘要，宿主、Core、字体适配与 Compat 的关键类在打包时校验。
+
+发布时创建并推送对应修订的 annotated tag，再运行 Release 工作流，填写目标、标签及 `PUBLISH <tag>`。上游项目继续独立维护版本与发布。

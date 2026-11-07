@@ -1,81 +1,72 @@
-# Qz-GTNH
+# 给 GTNH 装上连锁挖矿
 
-为 GTNH 提供配齐依赖的 Qz 模组补充安装包。
+这里是 Qz-GTNH。给已经装好的 GTNH 加上连锁挖矿，需要的文件都装在一个包里。
 
-## 下载哪个文件
+## ① 下载
 
-按你正在玩的 GTNH 版本，点击下表中的“下载完整安装包”。链接直接下载已配齐依赖的 ZIP。
+先看你的 GTNH 版本，再点右边的蓝字。
 
-| 你正在玩的 GTNH 版本 | 下载这个完整安装包 |
+| 你的游戏版本 | 点这里下载 |
 | --- | --- |
-| 2.9.0 正式版 | **[下载完整安装包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-r2/qz-gtnh-2.9.0-r2.zip)** · [发布说明](https://github.com/QuanhuZeYu/Qz-GTNH/releases/tag/gtnh-2.9.0-r2) |
-| 2.9.0-RC-2 | **[下载完整安装包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-RC-2-r2/qz-gtnh-2.9.0-RC-2-r2.zip)** · [发布说明](https://github.com/QuanhuZeYu/Qz-GTNH/releases/tag/gtnh-2.9.0-RC-2-r2) |
+| **2.9.0 正式版** | **[下载正式版安装包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-r2/qz-gtnh-2.9.0-r2.zip)** |
+| **2.9.0-RC-2 测试版** | **[下载 RC2 测试版安装包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-RC-2-r2/qz-gtnh-2.9.0-RC-2-r2.zip)** |
 
-**每个完整安装包都已配齐 Miner、UILib、Core、字体适配库和 Compat。下载与你的 GTNH 版本对应的一个完整包即可。**
+不知道版本？打开 GTNH，看看主菜单底部的版本号。写着 `2.9.0-RC-2` 就选测试版，写着 `2.9.0` 就选正式版。
 
-下载页中的 `Source code (zip)`、`Source code (tar.gz)` 是开发源码；`.json`、`.sha256` 是清单和校验信息。玩家安装使用上表中的 `qz-gtnh-…zip`。
+**选一个和游戏版本相同的包就够了。包里的文件要全部一起用。**
 
-## 怎么安装
+## ② 安装
 
-1. 关闭游戏，备份当前实例。在启动器中选中该 GTNH 实例，通过“文件夹 / 打开实例文件夹”打开游戏目录，找到里面已有的 `mods` 文件夹。Prism Launcher 可右键实例选择“文件夹”，再进入 `.minecraft`。
-2. 从实例的 `mods` 中移出旧 Qz-Miner、Qz-UILib、Qz-UILib-Compat 和旧拆分运行库，保留配置与其他整合包模组。
-3. 用文件管理器解压下载的完整安装包，打开解压出来的 `mods` 文件夹。
-4. **选中这个文件夹里的全部 Jar，一起复制到游戏实例原有的 `mods` 文件夹中。每个 Jar 都要安装，它们共同组成一套。**
-5. 在启动器中照常启动游戏。Java、UniMixins 等沿用 GTNH 实例原有设置。联机时，客户端与服务端使用同一套 Qz 组合。
-
-GTNH 2.9.0 安装完成后，游戏实例的 `mods` 中应同时有以下文件：
-
-```text
-mods/
-  qz_miner-5.5.1.jar
-  qz_uilib-5.0.0-beta5.jar
-  qz_uilib-core-java8.jar
-  qz_uilib-font-adapter-java8.jar
-  qz_uilib_compat-1.0.0-beta3.jar
-```
-
-**上面的全部 Jar 都是必需文件，一起放入游戏实例的 `mods` 文件夹。** 其中 `java8` 是库的兼容目标，GTNH 的新版 Java 实例同样安装这两个文件。
-
-## 启动时提示缺少类
-
-| 日志中出现 | 操作 |
-| --- | --- |
-| `FontTextService` | 检查当前游戏实例的 `mods` 中有 `qz_uilib-core-java8.jar`；从完整安装包重新复制全部 Jar。 |
-| `Lwjgl3GlApi` | 检查当前游戏实例的 `mods` 中有对应的 `qz_uilib_compat-…jar`；从完整安装包重新复制全部 Jar。 |
-| 文件齐全后仍无法启动 | 在启动器中导出新的完整启动日志，提交到本仓 Issues，并附 GTNH 版本。 |
-
-相关问题：[Qz-Miner#259](https://github.com/QuanhuZeYu/Qz-Miner/issues/259)。
+先关掉游戏，备份游戏文件夹。
 
 <details>
-<summary>维护者说明：版本清单、构建与发布</summary>
+<summary>以前装过 Qz？复制新文件前先看这里</summary>
 
-## 固定版本组合
-
-| GTNH | Qz-Miner | Qz-UILib | Qz-UILib-Compat | 精确清单 |
-| --- | --- | --- | --- | --- |
-| 2.9.0-RC-2 | 5.5.0 | 5.0.0-beta4 | 1.0.0-beta2 | [RC2](<combinations/2.9.0-RC-2.json>) |
-| 2.9.0 | 5.5.1 | 5.0.0-beta5 | 1.0.0-beta3 | [正式版](<combinations/2.9.0.json>) |
-
-上方完整安装包对应组合修订 `r2`。来源固定到上游 Release，下载及缓存均核对 SHA256。UILib 使用对应版本的 Forge 1.7.10 完整安装 ZIP，打包时校验宿主、Core、字体适配与 Compat 中的关键类。
-
-## 本地构建
-
-使用 Python 3.12+ 标准库：
-
-```text
-python tools/bundle.py check
-python tools/bundle.py build
-python tools/bundle.py build --target 2.9.0-RC-2
-```
-
-输出位于 `build/dist/`：每个目标各有 ZIP、精确 JSON 清单和 SHA256 文件。缓存位于 `build/cache/`。同一环境的固定输入重复构建得到相同 ZIP。
-
-## 发布
-
-每个目标使用独立组合修订，标签格式为 `gtnh-<GTNH版本>-r<修订>`，首批为 `gtnh-2.9.0-RC-2-r1` 与 `gtnh-2.9.0-r1`。上游项目继续独立维护版本与发布。
-
-分支 CI 构建两个组合并保留产物。用户创建并推送对应 annotated tag 后，在 Release 工作流输入目标、标签和 `PUBLISH <tag>`。工作流从标签提交重新构建并发布正式 Release，附完整安装包、清单与摘要。每次组合更新递增修订并使用新标签。
-
-合同见[组合规格](<specs/combinations.md>)。仓库自有代码采用 [MIT](<LICENSE>)，上游与第三方许可随原 Jar 保留。
+先把游戏 `mods` 里文件名以 `qz_miner` 或 `qz_uilib` 开头的旧 `.jar` 文件移到备份文件夹，再复制新文件。其他模组和游戏配置照常保留。
 
 </details>
+
+1. **找到游戏的 `mods` 文件夹。** 在启动器里点“游戏文件夹”或“打开实例文件夹”，再打开 `mods`。找不到？先打开里面的 `.minecraft`，再找 `mods`。
+2. **解压刚才下载的包。** 再打开解压出来的 `mods` 文件夹。
+3. **把里面的文件全部复制过去。** 放进第 1 步找到的游戏 `mods` 文件夹。
+4. **打开游戏。** 还是用原来的启动器启动。
+
+📦 下载 → 📂 解压 → 📋 全部复制到游戏的 `mods` → 🎮 开游戏
+
+## ③ 开始玩
+
+进入存档，拿着镐，**按住 `~` 键，再挖方块**。连着的同类方块会一起挖掉。
+
+按键不顺手？打开“选项 → 控制”，找到 `Qz-Miner` 下的“连锁按键”，就能换按键。
+
+## 没装上怎么办
+
+先检查：**下载的包已经解压，里面的全部文件都放进了正在玩的游戏的 `mods` 文件夹。**
+
+还是打不开？[点这里反馈问题](https://github.com/QuanhuZeYu/Qz-GTNH/issues/new)，写上 GTNH 版本，并附上启动器导出的完整日志。
+
+<details>
+<summary>想核对文件或查看报错？点这里</summary>
+
+GTNH 2.9.0 正式版装好后，游戏的 `mods` 里应有：
+
+```text
+qz_miner-5.5.1.jar
+qz_uilib-5.0.0-beta5.jar
+qz_uilib-core-java8.jar
+qz_uilib-font-adapter-java8.jar
+qz_uilib_compat-1.0.0-beta3.jar
+```
+
+这些文件全部一起用。文件名里有 `java8` 的也要复制。
+
+| 日志中出现 | 检查这个文件是否已经放进游戏的 mods |
+| --- | --- |
+| `FontTextService` | `qz_uilib-core-java8.jar` |
+| `Lwjgl3GlApi` | `qz_uilib_compat-…jar` |
+
+如果去了 GitHub 的下载页，安装包是名字以 `qz-gtnh` 开头的 ZIP。`Source code` 是源码，其他清单和校验文件供维护者使用。上面的蓝色下载链接已经替你选好了安装包。
+
+</details>
+
+[开发与打包说明](<specs/combinations.md>) · [许可证](<LICENSE>)

@@ -58,14 +58,25 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          if [[ "$TARGET" == *-RC-* ]]; then
+            TARGET_LABEL="GTNH $TARGET 测试版"
+          else
+            TARGET_LABEL="GTNH $TARGET 正式版"
+          fi
           BUNDLE_FILES=(build/dist/*.zip)
           BUNDLE_NAME="${BUNDLE_FILES[0]##*/}"
+          BUNDLE_LABEL="下载：${TARGET_LABEL}安装包.zip"
+          echo "TARGET_LABEL=$TARGET_LABEL" >> "$GITHUB_ENV"
+          echo "BUNDLE_NAME=$BUNDLE_NAME" >> "$GITHUB_ENV"
+          echo "BUNDLE_LABEL=$BUNDLE_LABEL" >> "$GITHUB_ENV"
           {
-            printf "适用于 GTNH %s。\n\n" "$TARGET"
-            printf "**[下载完整安装包](%s/%s/releases/download/%s/%s)**\n\n" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$RELEASE_TAG" "$BUNDLE_NAME"
-            printf "包含 Qz-Miner、Qz-UILib、Core、字体适配库和 Compat，所需文件都在这一个包里。\n\n"
-            printf "安装方法：\n\n1. 关闭游戏并备份实例。\n2. 从启动器打开游戏文件夹，移出 mods 中的旧 Qz 模组和运行库，保留配置。\n3. 解压下载的 ZIP，将包内 mods 中的全部 Jar 一起复制到游戏原有的 mods 文件夹。\n4. 在启动器中照常启动游戏。\n\n"
-            printf "包内全部 Jar 都要安装。联机时，客户端与服务端使用同一组合。\n"
+            printf "**给 %s装上连锁挖矿。**\n\n" "$TARGET_LABEL"
+            printf "**[下载 %s安装包](%s/%s/releases/download/%s/%s)**\n\n" "$TARGET_LABEL" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$RELEASE_TAG" "$BUNDLE_NAME"
+            printf "需要的文件都在这一个包里。\n\n"
+            printf "以前装过 Qz？先把游戏 mods 中以 qz_miner 或 qz_uilib 开头的旧 .jar 移到备份文件夹，再复制新文件。\n\n"
+            printf "1. 关掉游戏，备份游戏文件夹。\n2. 从启动器打开游戏文件夹，找到 mods。找不到？先打开里面的 .minecraft。\n3. 解压下载的包，把包里 mods 中的全部文件复制到游戏的 mods。\n4. 用原来的启动器开游戏。\n\n"
+            printf "**包里的文件要全部一起用。**\n\n"
+            printf "[看完整安装步骤](https://github.com/%s#readme) · [装不上？点这里反馈](https://github.com/%s/issues/new)\n" "$GITHUB_REPOSITORY" "$GITHUB_REPOSITORY"
           } > build/release-notes.md
       - uses: actions/upload-artifact@v4
         with:
@@ -75,9 +86,4 @@ jobs:
       - name: 创建正式 Release
         shell: bash
         run: |
-          if [[ "$TARGET" == *-RC-* ]]; then
-            RELEASE_TITLE="GTNH $TARGET 测试版 · Qz 完整安装包"
-          else
-            RELEASE_TITLE="GTNH $TARGET 正式版 · Qz 完整安装包"
-          fi
-          gh release create "$RELEASE_TAG" build/dist/* --verify-tag --title "$RELEASE_TITLE" --notes-file build/release-notes.md --latest=false
+          gh release create "$RELEASE_TAG" "build/dist/$BUNDLE_NAME#$BUNDLE_LABEL" build/dist/*.json build/dist/*.sha256 --verify-tag --title "$TARGET_LABEL · 连锁挖矿安装包" --notes-file build/release-notes.md --latest=false
