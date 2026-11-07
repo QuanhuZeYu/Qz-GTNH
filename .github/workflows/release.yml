@@ -57,13 +57,19 @@ jobs:
         run: |
           set -euo pipefail
           RUN_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          BUNDLE_FILES=(build/dist/*.zip)
+          BUNDLE_NAME="${BUNDLE_FILES[0]##*/}"
           {
-            printf "# Qz-GTNH %s\n\n" "$RELEASE_TAG"
-            printf "## 更新\n\n提供 GTNH %s 的固定 Qz 版本组合，精确版本与来源见随附 JSON 清单。\n\n" "$TARGET"
-            printf "## 兼容性与升级动作\n\n备份对应 GTNH 实例，移除旧 Qz 运行件后合并补充 ZIP，保留原配置及整合包原有依赖。客户端与服务端使用同一组合。\n\n"
+            printf "# GTNH %s 完整安装包\n\n" "$TARGET"
+            printf "**[点击下载完整安装包](%s/%s/releases/download/%s/%s)**\n\n" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$RELEASE_TAG" "$BUNDLE_NAME"
+            printf "此 ZIP 已包含 Miner、UILib、Core、字体适配库和 Compat，全部运行 Jar 共同组成一套。\n\n"
+            printf "## 安装\n\n1. 关闭游戏，备份对应 GTNH 实例。\n2. 从启动器打开游戏文件夹，移出 mods 中的旧 Qz 运行件，保留原配置。\n3. 用文件管理器解压安装包，将包内 mods 中的全部 Jar 一起复制到游戏已有的 mods 文件夹。\n4. 从启动器照常启动，沿用原 Java 与 UniMixins。联机双方使用同一组合。\n\n"
+            printf "附件中的 Source code 是源码；JSON、SHA256 与 evidence 是维护信息。玩家点击上方完整安装包链接即可。\n\n"
+            printf "## 组合来源\n\n提供 GTNH %s 的固定 Qz 版本组合，精确版本与来源见随附 JSON 清单。关联问题：QuanhuZeYu/Qz-Miner#259。\n\n" "$TARGET"
             printf "## 验证边界\n\n已完成清单校验、上游 SHA256 核对与打包。游戏启动、联机与渲染待目标实例实机验证。\n\n"
             printf "## 发布证据\n\n- 提交：%s\n- 标签对象：%s\n- 工作流：%s\n\n" "$RELEASE_SHA" "$(git rev-parse "refs/tags/$RELEASE_TAG")" "$RUN_URL"
             cat build/dist/*.sha256
+            printf "\n[![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)\n"
           } > build/release-notes.md
           cp build/release-notes.md build/dist/release-evidence.md
       - uses: actions/upload-artifact@v4

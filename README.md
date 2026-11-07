@@ -4,12 +4,12 @@
 
 ## 下载哪个文件
 
-打开本仓 [下载页面（Releases）](https://github.com/QuanhuZeYu/Qz-GTNH/releases)，找到与你的 GTNH 版本一致的发布，在 **Assets（附件）** 中下载下表对应的完整安装包。文件名末尾的 `r数字` 是修订号，选择该 GTNH 版本已发布的最新修订。
+按你正在玩的 GTNH 版本，点击下表中的“下载完整安装包”。链接直接下载已配齐依赖的 ZIP。
 
 | 你正在玩的 GTNH 版本 | 下载这个完整安装包 |
 | --- | --- |
-| 2.9.0 正式版 | 文件名以 `qz-gtnh-2.9.0-r` 开头、以 `.zip` 结尾 |
-| 2.9.0-RC-2 | 文件名以 `qz-gtnh-2.9.0-RC-2-r` 开头、以 `.zip` 结尾 |
+| 2.9.0 正式版 | **[下载完整安装包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-r2/qz-gtnh-2.9.0-r2.zip)** · [发布说明](https://github.com/QuanhuZeYu/Qz-GTNH/releases/tag/gtnh-2.9.0-r2) |
+| 2.9.0-RC-2 | **[下载完整安装包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-RC-2-r2/qz-gtnh-2.9.0-RC-2-r2.zip)** · [发布说明](https://github.com/QuanhuZeYu/Qz-GTNH/releases/tag/gtnh-2.9.0-RC-2-r2) |
 
 **每个完整安装包都已配齐 Miner、UILib、Core、字体适配库和 Compat。下载与你的 GTNH 版本对应的一个完整包即可。**
 
@@ -56,7 +56,7 @@ mods/
 | 2.9.0-RC-2 | 5.5.0 | 5.0.0-beta4 | 1.0.0-beta2 | [RC2](<combinations/2.9.0-RC-2.json>) |
 | 2.9.0 | 5.5.1 | 5.0.0-beta5 | 1.0.0-beta3 | [正式版](<combinations/2.9.0.json>) |
 
-源码组合修订为 `r2`，已发布修订以 Releases 为准。来源固定到上游 Release，下载及缓存均核对 SHA256。UILib 使用对应版本的 Forge 1.7.10 完整安装 ZIP，打包时校验宿主、Core、字体适配与 Compat 中的关键类。
+上方完整安装包对应组合修订 `r2`。来源固定到上游 Release，下载及缓存均核对 SHA256。UILib 使用对应版本的 Forge 1.7.10 完整安装 ZIP，打包时校验宿主、Core、字体适配与 Compat 中的关键类。
 
 ## 本地构建
 
