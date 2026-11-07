@@ -35,6 +35,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          # 标签触发时 checkout 会把本地标签改为提交引用；先取主分支，再由下步校验并切到发布标签。
+          ref: main
           fetch-depth: 0
           persist-credentials: false
       - name: 核对发布授权与不可变标签
