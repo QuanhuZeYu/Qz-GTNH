@@ -44,7 +44,7 @@ mods/
 | `Lwjgl3GlApi` | 检查当前游戏实例的 `mods` 中有对应的 `qz_uilib_compat-…jar`；从完整安装包重新复制全部 Jar。 |
 | 文件齐全后仍无法启动 | 在启动器中导出新的完整启动日志，提交到本仓 Issues，并附 GTNH 版本。 |
 
-相关问题：[Qz-Miner#259](https://github.com/QuanhuZeYu/Qz-Miner/issues/259)。安装包已校验来源、文件完整性和关键类；游戏启动、联机与渲染待目标实例实机验证。
+相关问题：[Qz-Miner#259](https://github.com/QuanhuZeYu/Qz-Miner/issues/259)。
 
 <details>
 <summary>维护者说明：版本清单、构建与发布</summary>
@@ -74,7 +74,7 @@ python tools/bundle.py build --target 2.9.0-RC-2
 
 每个目标使用独立组合修订，标签格式为 `gtnh-<GTNH版本>-r<修订>`，首批为 `gtnh-2.9.0-RC-2-r1` 与 `gtnh-2.9.0-r1`。上游项目继续独立维护版本与发布。
 
-分支 CI 构建两个组合并保留产物。用户创建并推送对应 annotated tag 后，在 Release 工作流输入目标、标签和 `PUBLISH <tag>`。工作流从标签提交重新构建并发布正式 Release，附清单、安装包、摘要与本次工作流证据。每次组合更新递增修订并使用新标签。
+分支 CI 构建两个组合并保留产物。用户创建并推送对应 annotated tag 后，在 Release 工作流输入目标、标签和 `PUBLISH <tag>`。工作流从标签提交重新构建并发布正式 Release，附完整安装包、清单与摘要。每次组合更新递增修订并使用新标签。
 
 合同见[组合规格](<specs/combinations.md>)。仓库自有代码采用 [MIT](<LICENSE>)，上游与第三方许可随原 Jar 保留。
 
