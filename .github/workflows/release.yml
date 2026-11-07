@@ -76,7 +76,7 @@ jobs:
             printf "以前装过 Qz？先按首页安装说明，把这次要更新的旧 Qz 文件移到备份文件夹，再复制新文件。\n\n"
             printf "1. 关掉游戏，备份游戏文件夹。\n2. 从启动器打开游戏文件夹，找到 mods。找不到？先打开里面的 .minecraft。\n3. 解压下载的包，把包里 mods 中的全部文件复制到游戏的 mods。\n4. 用原来的启动器开游戏。\n\n"
             printf "**包里的文件要全部一起用。**\n\n"
-            printf "[看完整安装步骤](https://github.com/%s#readme) · [装不上？点这里反馈](https://github.com/%s/issues/new)\n" "$GITHUB_REPOSITORY" "$GITHUB_REPOSITORY"
+            printf "[看完整安装步骤](https://github.com/%s#readme) · [UILib 怎么搭配](https://github.com/%s#uilib-怎么搭配) · [装不上？点这里反馈](https://github.com/%s/issues/new)\n" "$GITHUB_REPOSITORY" "$GITHUB_REPOSITORY" "$GITHUB_REPOSITORY"
           } > build/release-notes.md
       - uses: actions/upload-artifact@v4
         with:
