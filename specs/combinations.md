@@ -1,11 +1,11 @@
 # GTNH 版本组合
 
-Qz-GTNH 为指定 GTNH 版本固定一套已发布 Qz 运行制品，提供补充安装包。业务源码、版本和发布归各上游仓。
+Qz-GTNH 是 Qz 生态面向 GTNH 的统一安装入口，按 GTNH 版本提供 Qz 系列模组及其运行库。新增 Qz 模组归入相应版本组合，具体模组的用法分别说明；业务源码、版本和发布归各上游仓。
 
 ## 范围
 
 - 初始目标为 GTNH `2.9.0-RC-2` 与 `2.9.0`，Minecraft `1.7.10`。
-- 组合包含 Qz-Miner、Qz-UILib 必需运行件、Qz-UILib-Compat，消费上游公开 Release。
+- 当前组合包含 Qz-Miner、Qz-UILib 必需运行件、Qz-UILib-Compat，消费上游公开 Release。
 - 采用 Python 3.12+ 标准库完成下载、校验与 ZIP 打包。
 - 自有代码采用 MIT；上游及第三方许可随安装包保留。
 

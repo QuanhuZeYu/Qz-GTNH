@@ -1,6 +1,6 @@
-# 给 GTNH 装上连锁挖矿
+# Qz-GTNH · Qz 系列模组包
 
-这里是 Qz-GTNH。给已经装好的 GTNH 加上连锁挖矿，需要的文件都装在一个包里。
+给已经装好的 GTNH 安装 Qz 系列模组。模组和需要的文件都放在一个包里，下载后一起安装。
 
 ## ① 下载
 
@@ -8,8 +8,8 @@
 
 | 你的游戏版本 | 点这里下载 |
 | --- | --- |
-| **2.9.0 正式版** | **[下载正式版安装包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-r2/qz-gtnh-2.9.0-r2.zip)** |
-| **2.9.0-RC-2 测试版** | **[下载 RC2 测试版安装包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-RC-2-r2/qz-gtnh-2.9.0-RC-2-r2.zip)** |
+| **2.9.0 正式版** | **[下载正式版 Qz 模组包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-r2/qz-gtnh-2.9.0-r2.zip)** |
+| **2.9.0-RC-2 测试版** | **[下载 RC2 测试版 Qz 模组包](https://github.com/QuanhuZeYu/Qz-GTNH/releases/download/gtnh-2.9.0-RC-2-r2/qz-gtnh-2.9.0-RC-2-r2.zip)** |
 
 不知道版本？打开 GTNH，看看主菜单底部的版本号。写着 `2.9.0-RC-2` 就选测试版，写着 `2.9.0` 就选正式版。
 
@@ -22,7 +22,7 @@
 <details>
 <summary>以前装过 Qz？复制新文件前先看这里</summary>
 
-先把游戏 `mods` 里文件名以 `qz_miner` 或 `qz_uilib` 开头的旧 `.jar` 文件移到备份文件夹，再复制新文件。其他模组和游戏配置照常保留。
+先把这次要更新的旧 Qz 文件移到备份文件夹，再复制新文件。当前包对应的旧文件以 `qz_miner` 或 `qz_uilib` 开头，后缀是 `.jar`。其他模组和游戏配置照常保留。
 
 </details>
 
@@ -33,11 +33,24 @@
 
 📦 下载 → 📂 解压 → 📋 全部复制到游戏的 `mods` → 🎮 开游戏
 
-## ③ 开始玩
+## 包里有哪些模组
+
+这里会随 Qz 系列模组的加入而更新。当前包含：
+
+| 模组 | 能做什么 |
+| --- | --- |
+| [Qz-Miner](https://github.com/QuanhuZeYu/Qz-Miner) | 连锁挖矿 |
+
+模组需要的运行库也在包里，安装时全部一起复制。
+
+<details>
+<summary>Qz-Miner：怎么连锁挖矿</summary>
 
 进入存档，拿着镐，**按住 `~` 键，再挖方块**。连着的同类方块会一起挖掉。
 
 按键不顺手？打开“选项 → 控制”，找到 `Qz-Miner` 下的“连锁按键”，就能换按键。
+
+</details>
 
 ## 没装上怎么办
 
