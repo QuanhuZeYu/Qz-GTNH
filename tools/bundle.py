@@ -94,7 +94,25 @@ def install_files(combination):
             for entry in entries:
                 destination = ("mods/" if entry.filename in expected_jars else "upstream/uilib/") + entry.filename
                 add_file(files, destination, archive.read(entry))
+    verify_runtime(files, combination)
     return files
+
+
+def verify_runtime(files, combination):
+    versions = {a["project"]: a["version"] for a in combination["artifacts"]}
+    # Qz-Miner#259：主 Mod 齐全仍可能缺 Core，LWJGL3 binding 则由 Compat 提供。
+    required = {
+        f"qz_uilib-{versions['uilib']}.jar": "club/heiqi/uilib/UILib.class",
+        "qz_uilib-core-java8.jar": "club/heiqi/uilib/ui/scene/text/font/FontTextService.class",
+        "qz_uilib-font-adapter-java8.jar": "club/heiqi/uilib/host/font/freetype/NativeFontService.class",
+        f"qz_uilib_compat-{versions['compat']}.jar": "club/heiqi/uilib/host/client/gl/Lwjgl3GlApi.class",
+    }
+    for name, class_name in required.items():
+        with zipfile.ZipFile(io.BytesIO(files["mods/" + name])) as jar:
+            if jar.testzip() is not None:
+                raise ValueError(f"运行 Jar 内容损坏：{name}")
+            if class_name not in jar.namelist():
+                raise ValueError(f"运行依赖缺失：{name} 须包含 {class_name}")
 
 
 def tag_name(combination):
@@ -108,7 +126,10 @@ def build(combination, manifest_path):
     instructions = (
         f"Qz-GTNH / GTNH {combination["gtnh"]} / r{combination["revision"]}\n\n"
         "备份对应 GTNH 实例，移除旧 Qz-Miner、UILib、Compat 和旧拆分运行件，保留原配置。\n"
-        "将本包内容合并到实例目录；mods 内为必需运行件，upstream 保留上游说明。\n"
+        "将本包内容合并到实例的 .minecraft 目录；mods 内的全部 Jar 一起安装，upstream 保留上游说明。\n"
+        "必需运行文件（含独立 Core 与字体适配库）：\n"
+        + "".join(f"- {name}\n" for name in sorted(files) if name.startswith("mods/"))
+        + "\n"
         "沿用目标 GTNH 整合包的 Java、UniMixins 与其他原有依赖，客户端与服务端使用同一组合。\n"
         "文件摘要见 files.sha256，来源与精确版本见 combination.json。\n"
         "已验证制品来源及打包完整性；目标版本游戏启动、联机和渲染待实机验证。\n"
