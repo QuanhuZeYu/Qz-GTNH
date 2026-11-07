@@ -74,4 +74,10 @@ jobs:
           if-no-files-found: error
       - name: 创建正式 Release
         shell: bash
-        run: gh release create "$RELEASE_TAG" build/dist/* --verify-tag --title "GTNH $TARGET 完整安装包" --notes-file build/release-notes.md --latest=false
+        run: |
+          if [[ "$TARGET" == *-RC-* ]]; then
+            RELEASE_TITLE="GTNH $TARGET 测试版 · Qz 完整安装包 ${RELEASE_TAG##*-}"
+          else
+            RELEASE_TITLE="GTNH $TARGET 正式版 · Qz 完整安装包 ${RELEASE_TAG##*-}"
+          fi
+          gh release create "$RELEASE_TAG" build/dist/* --verify-tag --title "$RELEASE_TITLE" --notes-file build/release-notes.md --latest=false
